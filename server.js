@@ -29,6 +29,7 @@ wss.on('connection', (ws) => {
                 id: user.id,
                 name: user.username,
                 isHost: true,
+                chips: user.chips,
                 ws: ws,
               },
             ],
@@ -51,6 +52,7 @@ wss.on('connection', (ws) => {
             JSON.stringify({
               type: 'connection',
               message: `${user.username} has joined the session.`,
+              gameData: currentUsers,
             }),
             { binary: isBinary }
           );
